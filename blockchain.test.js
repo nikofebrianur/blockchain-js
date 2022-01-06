@@ -88,9 +88,9 @@ describe('Blockchain', () => {
 
         describe('when the new chain is longer', () => {
             beforeEach(() => {
-                blockchain.addBlock({ data: 'Cat' });
-                blockchain.addBlock({ data: 'Kitty' });
-                blockchain.addBlock({ data: 'Gato' });
+                newChain.addBlock({ data: 'Cat' });
+                newChain.addBlock({ data: 'Kitty' });
+                newChain.addBlock({ data: 'Gato' });
             })
             describe('and the chain is invalid', () => {
                 it('does not replace the chain', () => {
