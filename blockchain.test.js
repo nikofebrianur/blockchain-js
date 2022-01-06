@@ -59,13 +59,23 @@ describe('Blockchain', () => {
 
             describe('and the chain does not contain any invalid blocks', () => {
                 it('returns true', () => {
-                    expect(Blockchain.isValidChain(blockchain.chain).toBe(true))
+                    expect(Blockchain.isValidChain(blockchain.chain)).toBe(true)
                 });
             });
         });
     });
 
     describe('replaceChain()', () => {
+        let errorMock, logMock;
+
+        beforeEach(() => {
+            errorMock = jest.fn();
+            logMock = jest.fn();
+
+            global.console.error = errorMock;
+            global.console.log = logMock;
+        });
+
         describe('when the new chain is not longer', () => {
             it('does not replace the chain', () => {
                 newChain.chain[0] = { new: 'chain'};
